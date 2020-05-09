@@ -6,7 +6,8 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     Super::BeginPlay();
     PrintLine(TEXT("Hello it is me"));
     PrintLine(TEXT("You need Macro TEXT to wrap the string"));
-    HiddenWord = TEXT("Honey"); // this is not input this is HiddenWord = "Honey"
+    InitGame();
+    
 }
 
 void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
@@ -20,4 +21,9 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
      }else{
          PrintLine(TEXT("It is wrong"));
      }
+}
+void UBullCowCartridge::InitGame()
+{
+    HiddenWord = TEXT("Honey"); // this is not input this is HiddenWord = "Honey"
+    Lives = 4;
 }

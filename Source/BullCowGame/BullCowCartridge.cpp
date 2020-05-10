@@ -4,9 +4,11 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    PrintLine(TEXT("Hello it is me"));
-    PrintLine(TEXT("You need Macro TEXT to wrap the string"));
-    InitGame();
+    PrintLine(Text("The hidden word is: %s."),*HiddenWord);
+    PrintLine(TEXT("Welcome to Bull Cow!"));
+    PrintLine(TEXT("Guess the %i letter word"), HiddenWord.Len());
+    PrintLine(TEXT("Enter your guess and press [ENTER] to continue...1;"))
+    SetupGame();
     
 }
 
@@ -22,7 +24,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
          PrintLine(TEXT("It is wrong"));
      }
 }
-void UBullCowCartridge::InitGame()
+void UBullCowCartridge::SetupGame()
 {
     HiddenWord = TEXT("Honey"); // this is not input this is HiddenWord = "Honey"
     Lives = 4;

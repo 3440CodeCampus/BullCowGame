@@ -4,7 +4,7 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    PrintLine(TEXT("The hidden word is: %s."),*HiddenWord));
+    PrintLine(TEXT("The hidden word is: %s."),*HiddenWord);
     PrintLine(TEXT("Welcome to Bull Cow!"));
     PrintLine(TEXT("Guess the %i letter word"), HiddenWord.Len());
     PrintLine(TEXT("Enter your guess and press [ENTER] to continue...1;"));

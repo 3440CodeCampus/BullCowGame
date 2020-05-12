@@ -49,6 +49,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
             }
             if(Guess.Len() != HiddenWord.Len())
             {
+                ClearScreen();
                 PrintLine(TEXT("Sorry, try guessing again. \nYou have %i lives remain"),Lives);
                 PrintLine(TEXT("The hidden word is %i character long, try again"), HiddenWord.Len());
                 return;

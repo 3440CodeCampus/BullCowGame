@@ -18,11 +18,12 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
      }else{
           ProcessGuess(Input) ;
         }
+        
     
 }
 void UBullCowCartridge::SetupGame()
 {
-    PrintLine(TEXT("Welcome to Bull Cow!-L34.1"));
+    PrintLine(TEXT("Welcome to Bull Cow!"));
     HiddenWord = TEXT("Honey"); // this is not input this is HiddenWord = "Honey"
     Lives = HiddenWord.Len();
     bGameOver = false;
@@ -50,16 +51,19 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
             if(Guess.Len() != HiddenWord.Len())
             {
                 ClearScreen();
+                PrintLine(TEXT("Lost a life!"));
+                --Lives;
                 PrintLine(TEXT("Sorry, try guessing again. \nYou have %i lives remain"),Lives);
                 PrintLine(TEXT("The hidden word is %i character long, try again"), HiddenWord.Len());
                 return;
+            
+            
             }
-            PrintLine(TEXT("Lost a life!"));
-            --Lives;
             
             if(Lives <= 0)
             {
                 ClearScreen();
+                PrintLine(TEXT("%i life"), Lives);
                 PrintLine(TEXT("You have no life left!"));
                 PrintLine(TEXT("The hidden word was %s."), *HiddenWord);
                 EndGame();

@@ -22,7 +22,7 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
 }
 void UBullCowCartridge::SetupGame()
 {
-    PrintLine(TEXT("Welcome to Bull Cow!"));
+    PrintLine(TEXT("Welcome to Bull Cow!-L34"));
     HiddenWord = TEXT("Honey"); // this is not input this is HiddenWord = "Honey"
     Lives = HiddenWord.Len();
     bGameOver = false;

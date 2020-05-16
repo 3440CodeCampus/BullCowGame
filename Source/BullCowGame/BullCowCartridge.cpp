@@ -6,6 +6,11 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
     PrintLine(TEXT("There are %i words in the list"),Words.Num());
+    for(int32 Index = 0; Index <= 10; Index++)
+    {
+        if(Words[Index].Len() >= 4 && Words[Index].Len() <= 8 )
+        PrintLine(TEXT("%s"), *Words[Index]);
+    }
     // PrintLine(TEXT("Hello it is me"));
     // PrintLine(TEXT("You need Macro TEXT to wrap the string"));
     // InitGame();

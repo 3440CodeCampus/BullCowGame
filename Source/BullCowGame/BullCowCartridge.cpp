@@ -6,11 +6,12 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
     PrintLine(TEXT("There are %i words in the list"),Words.Num());
-    for(int32 Index = 0; Index <= 10; Index++)
-    {
-        if(Words[Index].Len() >= 4 && Words[Index].Len() <= 8 )
-        PrintLine(TEXT("%s"), *Words[Index]);
-    }
+    PrintLine(TEXT("There are %i valid words"), GetValidWords(Words).Num());
+    // for(int32 Index = 0; Index <= 10; Index++)
+    // {
+    //     if(Words[Index].Len() >= 4 && Words[Index].Len() <= 8 )
+    //     PrintLine(TEXT("%s"), *Words[Index]);
+    // }
     // PrintLine(TEXT("Hello it is me"));
     // PrintLine(TEXT("You need Macro TEXT to wrap the string"));
     // InitGame();
@@ -33,4 +34,17 @@ void UBullCowCartridge::InitGame()
 {
     HiddenWord = TEXT("Honey"); // this is not input this is HiddenWord = "Honey"
     Lives = 4;
+}
+
+TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordList) const
+{
+    TArray<FString> ValidWords;
+    for(int32 Index = 0; Index < WordList.Num(); Index++)
+    {
+        if(WordList[Index].Len() >= 4 && WordList[Index].Len() <= 8)
+        {
+            ValidWords.Emplace(WordList[Index]);
+        }
+    }
+    return ValidWords;
 }

@@ -39,12 +39,23 @@ void UBullCowCartridge::InitGame()
 TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordList) const
 {
     TArray<FString> ValidWords;
-    for(int32 Index = 0; Index < WordList.Num(); Index++)
+    // 傳統 方法 遂個 loop 過去 //
+    ////////////////////////////
+    // for(int32 Index = 0; Index < WordList.Num(); Index++)
+    // {
+    //     if(WordList[Index].Len() >= 4 && WordList[Index].Len() <= 8)
+    //     {
+    //         ValidWords.Emplace(WordList[Index]);
+    //     }
+    // }
+    // 不必 loop //
+    //////////////
+    for (FString Word: WordList)
     {
-        if(WordList[Index].Len() >= 4 && WordList[Index].Len() <= 8)
-        {
-            ValidWords.Emplace(WordList[Index]);
-        }
+        if(Word.Len() >= 4 && Word.Len() <= 8)
+            {
+                ValidWords.Emplace(Word);
+            }
     }
     return ValidWords;
 }

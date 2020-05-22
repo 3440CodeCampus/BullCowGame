@@ -5,7 +5,7 @@
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
-    IsIsogram = GetValidWords(Words);
+    IsIsograms = GetValidWords(Words);
     SetupGame();
     
 }
@@ -35,11 +35,13 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Type in your guess and \nPress enter to continue"));
     PrintLine(TEXT("The hidden word is %s"), *HiddenWord);
 }
+
 void UBullCowCartridge::EndGame()
 {
     bGameOver = true;
     PrintLine(TEXT("\nPress enter to play again"));
 }
+
 void UBullCowCartridge::ProcessGuess(const FString& Guess)
 {
     if(Guess ==  HiddenWord)
@@ -49,19 +51,23 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         return;
         
     }
+
     if(Guess.Len() != HiddenWord.Len())
     {
         PrintLine(TEXT("The Hidden word is %i letter long"), HiddenWord.Len());
         PrintLine(TEXT("Sorry try again! \nYou have %i lives remain"), Lives);
         return;
     }
+
     if(!IsIsogram(Guess))
     {
         PrintLine(TEXT("No repeat letter, Guess again"));
         return;
     }
+
     PrintLine(TEXT("Lost a life"));
     --Lives;
+
     if(Lives <= 0)
     {
         ClearScreen();
@@ -70,17 +76,18 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         EndGame();
         return;
     }
+
     FBullCowCount Score = GetBullCows(Guess);
     PrintLine(TEXT("You have %i Bulls and %i cows"), Score.Bulls, Score.Cows);
     PrintLine(TEXT("You have %i lives left, Guess again"), Lives);
-    
+}    
     bool UBullCowCartridge::IsIsogram(const FString& Word) const
     {
-        for(int32 Index = 0; Index < words.Len(); Index++)
+        for(int32 Index = 0; Index < Word.Len(); Index++)
         {
             for(int32 Compare = Index + 1; Compare < Word.Len(); Compare++)
             {
-                if(Word[Index == Word[Compare])
+                if(Word[Index] == Word[Compare])
                 {
                     return false;
                 }
@@ -89,7 +96,6 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         return true;
     }
 
-}
 TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList) const
 {
     TArray<FString> ValidWords;

@@ -6,7 +6,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 {
     Super::BeginPlay();
     PrintLine(TEXT("There are %i words in the list"),Words.Num());
-    PrintLine(TEXT("There are %i valid words"), GetValidWords(Words).Num());
+    PrintLine(TEXT("There are %i valid words [no loop]"), GetValidWords(Words).Num());
     // for(int32 Index = 0; Index <= 10; Index++)
     // {
     //     if(Words[Index].Len() >= 4 && Words[Index].Len() <= 8 )
